@@ -36,11 +36,11 @@ export default function index() {
         <>
         <div ref={header} className={styles.header}>
             <div className={styles.logo}>
-                <p className={styles.copyright}>©</p>
+                <p className={styles.copyright}>$</p>
                 <div className={styles.name}>
-                    <p className={styles.codeBy}>Code by</p>
-                    <p className={styles.dennis}>Dennis</p>
-                    <p className={styles.snellenberg}>Snellenberg</p>
+                    <p className={styles.codeBy}>Insprano</p>
+                    <p className={styles.dennis}>X</p>
+                    <p className={styles.snellenberg}>Udaan</p>
                 </div>
             </div>
             <div className={styles.nav}>
