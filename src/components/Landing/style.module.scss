@@ -4,27 +4,143 @@
     height: 100vh;
     overflow: hidden;
 
-    img{
-      object-fit: cover;
+    .imageContainer {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      
+      .backgroundImage {
+        object-fit: cover;
+        z-index: 1;
+      }
+      
+      .gradientOverlay {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        background: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0.8) 0%,
+          rgba(0, 0, 0, 0.3) 25%,
+          rgba(0, 0, 0, 0.3) 75%,
+          rgba(0, 0, 0, 0.8) 100%
+        );
+      }
+    }
+
+    .content {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      z-index: 3;
+
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2rem 4rem;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, transparent 100%);
+        backdrop-filter: blur(5px);
+        opacity: 0;
+        animation: fadeIn 1s ease-out forwards;
+        z-index: 10;
+
+        .logo {
+          a {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+            letter-spacing: 2px;
+            transition: opacity 0.3s ease;
+
+            &:hover {
+              opacity: 0.8;
+            }
+          }
+        }
+
+        .menuItems {
+          display: flex;
+          gap: 3rem;
+          
+          a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+
+            &::after {
+              content: '';
+              position: absolute;
+              bottom: -4px;
+              left: 0;
+              width: 0;
+              height: 2px;
+              background-color: white;
+              transition: width 0.3s ease;
+            }
+
+            &:hover::after {
+              width: 100%;
+            }
+          }
+        }
+
+        .contactButton {
+          padding: 0.75rem 1.5rem;
+          border: 2px solid white;
+          background: transparent;
+          color: white;
+          font-size: 1rem;
+          font-weight: 500;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          border-radius: 4px;
+
+          &:hover {
+            background: white;
+            color: black;
+          }
+        }
+      }
     }
     
     .sliderContainer{
       position: absolute;
-      top: calc(100vh - 350px);
+      bottom: 2rem;
+      left: 0;
+      width: 100%;
+      opacity: 0;
+      animation: fadeIn 1s ease-out forwards;
+      animation-delay: 0.5s;
+      overflow: hidden;
     }
     
     .slider{
       position: relative;
       white-space: nowrap;
+      display: flex;
+      width: fit-content;
     }
     
     .slider p{
       position: relative;
-      margin: 0px;
+      margin: 0;
       color: white;
-      font-size: 230px;
+      font-size: clamp(120px, 15vw, 230px);
       font-weight: 500;
       padding-right: 50px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      white-space: nowrap;
+      display: block;
     }
     
     .slider p:nth-of-type(2){
@@ -40,6 +156,8 @@
       color: white;
       font-size: 24px;
       font-weight: 300;
+      opacity: 0;
+      animation: fadeIn 1s ease-out forwards;
       p{
         margin: 0px;
         margin-bottom: 10px;
@@ -50,4 +168,15 @@
       }
     }
   }
+  
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
   
