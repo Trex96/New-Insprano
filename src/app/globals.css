@@ -1,6 +1,7 @@
-
 body{
     margin: 0px;
     overflow: hidden; /* Hide scrollbars */
     cursor: wait;
+    background-color: #0a0a0a;
+    color: #ffffff;
 }
