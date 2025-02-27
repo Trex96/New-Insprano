@@ -1,336 +1,167 @@
-"use client";
-import styles from "./style.module.scss";
-import { useRef, useEffect, useState } from "react";
-import Rounded from "../../common/RoundedButton";
+"use client"
+import { useGSAP } from "@gsap/react"
+import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import gsap from "gsap";
+import UnderLine from '../Underline/Index'
+import styles from './Style.module.css'
 
-export default function Description() {
-  const refs = useRef([]);
-  const containerRef = useRef(null);
-  const dateRef = useRef(null);
-  const countdownRef = useRef(null);
-  const [timeLeft, setTimeLeft] = useState({days: 0, hours: 0, minutes: 0, seconds: 0});
-  const [showCountdown, setShowCountdown] = useState(false);
-  const [showDate, setShowDate] = useState(true);
-  const [isVisible, setIsVisible] = useState(false);
-  const [initialAnimation, setInitialAnimation] = useState(null);
-  const [isAnimating, setIsAnimating] = useState(false);
-  const [isRolling, setIsRolling] = useState(false);
-  const [currentDisplayDate, setCurrentDisplayDate] = useState(new Date('2025-03-10'));
-  const [audio] = useState(typeof Audio !== "undefined" ? new Audio("/sounds/tick.mp3") : null);
-  const [isMuted, setIsMuted] = useState(false);
-  
-  const phrase = "Welcome to GCEK's Premier Tech Odyssey. Where Innovation Meets Excellence. Join us for an extraordinary journey through technology, creativity, and breakthrough innovations.";
 
-  const calculateTimeLeft = () => {
-    const eventDate = new Date('2025-03-10'); // Changed to March 10th
-    const now = new Date();
-    const difference = eventDate - now;
+gsap.registerPlugin(ScrollTrigger);
 
-    if (difference < 0) {
-      return {
-        days: 0,
-        hours: 0,
-        minutes: 0,
-        seconds: 0
-      };
-    }
+function About() {
 
-    return {
-      days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-      hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-      minutes: Math.floor((difference / 1000 / 60) % 60),
-      seconds: Math.floor((difference / 1000) % 60)
-    };
-  };
 
-  const animateInitialCountdown = () => {
-    if (isAnimating) return;
-    setIsAnimating(true);
-    
-    const endDate = new Date('2025-03-10');
-    const now = new Date();
-    const totalDays = Math.floor((endDate - now) / (1000 * 60 * 60 * 24));
-    
-    let currentDate = endDate;
-    const animationDuration = 3; // 3 seconds for the animation
-    const interval = (animationDuration * 1000) / totalDays;
+    useGSAP(() => {
+    gsap.from('.aboutHeading h1', {
+        y: 120,
+    })
+    gsap.to('.underline', {
+        width: '100%',
+        duration: 1.2,
+    })
+    gsap.from('.aboutText h2', {
+        y: 50,
+        stagger: 0.1,
 
-    const animation = setInterval(() => {
-      currentDate = new Date(currentDate.getTime() - (24 * 60 * 60 * 1000));
-      const difference = endDate - currentDate;
-
-      if (difference <= endDate - now) {
-        clearInterval(animation);
-        setIsAnimating(false);
-        setShowCountdown(true);
-        setShowDate(false);
-        return;
-      }
-
-      setTimeLeft({
-        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((difference / 1000 / 60) % 60),
-        seconds: Math.floor((difference / 1000) % 60)
-      });
-    }, interval);
-
-    setInitialAnimation(animation);
-  };
-
-  const playTick = () => {
-    if (audio && !isMuted) {
-      audio.currentTime = 0;
-      audio.volume = 0.1; // Reduce volume to 10%
-      audio.play().catch(err => console.log("Audio play failed:", err));
-    }
-  };
-
-  const rollNumbersDown = () => {
-    setIsRolling(true);
-    const endDate = new Date('2025-03-10');
-    const now = new Date();
-    const monthDiff = (endDate.getFullYear() - now.getFullYear()) * 12 + 
-                     (endDate.getMonth() - now.getMonth());
-    
-    // Create intermediate dates for smooth animation
-    const dates = [];
-    let currentDate = new Date(endDate);
-    
-    // Add days until we reach the target month
-    while (currentDate > now) {
-      dates.push(new Date(currentDate));
-      currentDate.setDate(currentDate.getDate() - 1);
-    }
-    
-    // Use GSAP for smooth animation
-    const tl = gsap.timeline({
-      onUpdate: () => playTick(), // Add tick sound on each update
-      onComplete: () => {
-        setIsRolling(false);
-        setShowCountdown(true);
-        setShowDate(false);
-      }
-    });
-
-    tl.to({
-      value: 0
-    }, {
-      value: dates.length - 1,
-      duration: 3, // 3 seconds total
-      ease: "power1.inOut",
-      onUpdate: function() {
-        const progress = this.progress();
-        const index = Math.min(Math.floor(progress * dates.length), dates.length - 1);
-        setCurrentDisplayDate(dates[index]);
-      }
-    });
-
-    return () => tl.kill();
-  };
-
-  const formatDisplayDate = (date) => {
-    return new Intl.DateTimeFormat('en-US', {
-      month: 'long',
-      day: 'numeric',
-      year: 'numeric'
-    }).format(date);
-  };
-
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-    
-    // Intersection Observer setup
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !isVisible) {
-          setIsVisible(true);
-          setShowDate(true);
-          gsap.delayedCall(0.5, rollNumbersDown); // Add small delay before starting
-        } else if (!entry.isIntersecting && isVisible) {
-          // Reset when section leaves viewport
-          setIsVisible(false);
-          setShowDate(true);
-          setShowCountdown(false);
-          if (initialAnimation) {
-            clearInterval(initialAnimation);
-          }
-          // Only attempt to clear props if elements exist
-          if (dateRef.current && countdownRef.current) {
-            gsap.set([dateRef.current, countdownRef.current], { 
-              clearProps: "all" 
-            });
-          }
-        }
-      },
-      { threshold: 0.3 }
-    );
-
-    if (containerRef.current) {
-      observer.observe(containerRef.current);
-    }
-
-    // Timer setup
-    setTimeLeft(calculateTimeLeft());
-    const timer = setInterval(() => {
-      setTimeLeft(calculateTimeLeft());
-    }, 1000);
-
-    return () => {
-      clearInterval(timer);
-      if (initialAnimation) {
-        clearInterval(initialAnimation);
-      }
-      observer.disconnect();
-    };
-  }, [isVisible, initialAnimation]);
-
-  const startAnimations = () => {
-    // Only proceed with animations if elements exist
-    if (countdownRef.current) {
-      gsap.set(countdownRef.current, { 
+    })
+    gsap.from('.rightText h5', {
         opacity: 0,
-        y: 20
-      });
+        stagger: 0.1
+    })
+    gsap.to('.underline2', {
+        width: '100%',
+        duration: 1.2,
+    })
 
-      const tl = gsap.timeline({
-        onComplete: () => {
-          setShowCountdown(true);
-          setShowDate(false);
-        }
-      });
-
-      tl.to({}, { duration: 1.5 })
-        .to(countdownRef.current, {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: "power2.out"
-        });
-
-      // Add floating animation only if elements exist
-      const countdownItems = document.querySelectorAll('.countdownItem');
-      if (countdownItems.length > 0) {
-        gsap.fromTo(countdownItems, 
-          { y: 0 },
-          {
-            y: -8,
-            duration: 2,
-            ease: "sine.inOut",
-            yoyo: true,
-            repeat: -1,
-            stagger: {
-              amount: 0.4,
-              from: "center"
-            }
-          }
-        );
-      }
-    }
-  };
-
-  const splitWords = (phrase) => {
-    return phrase.split(" ").map((word, i) => (
-      <p key={word + "_" + i}>
-        {word.split("").map((letter, j) => (
-          <span
-            key={letter + "_" + j}
-            ref={(el) => {
-              refs.current.push(el);
-            }}
-            style={{ opacity: 0, transform: 'translateY(20px)' }}
-          >
-            {letter}
-          </span>
-        ))}
-        &nbsp;
-      </p>
-    ));
-  };
-
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-    
-    gsap.to(refs.current, {
-      opacity: 1,
-      y: 0,
-      duration: 1,
-      stagger: 0.02,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top 80%",
-        toggleActions: "play none none reverse"
-      }
-    });
-
-    // Subtle floating animation for countdown
-    gsap.to('.countdownItem', {
-      y: -10,
-      duration: 2,
-      ease: "power1.inOut",
-      yoyo: true,
-      repeat: -1,
-      stagger: 0.2
-    });
-  }, []);
+    })
 
   return (
-    <section ref={containerRef} className={styles.description}>
-      <button 
-        onClick={() => setIsMuted(!isMuted)}
-        className={styles.soundToggle}
-      >
-        {isMuted ? "🔇" : "🔊"}
-      </button>
-      <div className={styles.body}>
-        <div className={styles.dateContainer}>
-          {showDate && (
-            <h2 
-              ref={dateRef} 
-              className={`${styles.eventDate} ${isRolling ? styles.rolling : ''}`}
-            >
-              {formatDisplayDate(currentDisplayDate)}
-            </h2>
-          )}
-          <div 
-            ref={countdownRef} 
-            className={`${styles.countdown} ${showCountdown ? styles.visible : ''}`}
-          >
-            <div className={styles.countdownItem}>
-              <span>{String(timeLeft.days).padStart(2, '0')}</span>
-              <p>Days</p>
+    <div className="page4 relative sm:flex gap-[5vw]  w-full  px-[4vw] py-[6vw]
+        sm:px-[4vw]
+    ">
+        <div className="left">
+            <div className=" sm:pl-[14vw] ">
+                <div className="font-[silkSerif] text-[4.6vw] 
+                    sm:text-[2.6vw] sm:leading-[4vw]"
+                >
+                    <h2>03</h2>
+                </div>             
             </div>
-            <div className={styles.countdownItem}>
-              <span>{String(timeLeft.hours).padStart(2, '0')}</span>
-              <p>Hours</p>
-            </div>
-            <div className={styles.countdownItem}>
-              <span>{String(timeLeft.minutes).padStart(2, '0')}</span>
-              <p>Minutes</p>
-            </div>
-            <div className={styles.countdownItem}>
-              <span>{String(timeLeft.seconds).padStart(2, '0')}</span>
-              <p>Seconds</p>
-            </div>
-          </div>
         </div>
-        
-        <div className={styles.textContainer}>
-          {splitWords(phrase)}
-        </div>
+        <div className="right">
+            <div className="">
+                <div className="aboutHeading overflow-hidden pb-[3vw] sm:pb-0">
+                    <h1 className="text-[8vw] leading-[10vw] tracking-tighter
+                        sm:text-[6vw] font-[PlinaReg] sm:leading-[6vw] sm:tracking-normal
+                        uppercase"
+                    >
+                        About Obys
+                    </h1>
+                </div>
+                {/* <div 
+                    className="underline mt-[6vw] mb-[11vw] w-0 h-[.25vw] 
+                    sm:h-[.01vw] sm:mt-[3.8vw] sm:mb-[5vw] bg-white"
+                ></div> */}
 
-        <div className={styles.buttonContainer}>
-          <button className={styles.button}>
-            <p>Register Now</p>
-          </button>
-          <button className={`${styles.button} ${styles.secondary}`}>
-            <p>About Event</p>
-          </button>
+                {/*Line animation */}
+                {/* <div 
+                className={`line ${styles.line} relative mt-[6vw] mb-[11vw] w-full h-[.25vw] 
+                sm:h-[.01vw] sm:mt-[4vw] sm:mb-[5vw] `}
+                >
+                    <div 
+                        className={`box ${styles.box}`} 
+                        onMouseMove={manageMouseMove}
+                        onMouseLeave={manageMouseLeave}
+                    >
+                    </div>
+                    <svg className='w-full h-[100px] absolute -top-[50px]'>
+                        <path ref={path} className={`path1 ${styles.path1}`} ></path>
+                    </svg>
+                </div> */}
+                <UnderLine marginBottom='4vw' marginTop='4vw' />
+                <div 
+                    className="sm:w-2/4 text-[5.5vw] tracking-normal leading-[6vw] font-[PlinaReg] pt-[8vw] sm:pt-0
+                    sm:text-[1.8vw] sm:leading-[2.2vw]"
+                >
+                    <div className="aboutText overflow-hidden"><h2>Our agency is about people who</h2></div>
+                    <div className="aboutText overflow-hidden"><h2>love creating designing and</h2></div>
+                    <div className="aboutText overflow-hidden"><h2>developing wow projects. In the</h2></div>
+                    <div className="aboutText overflow-hidden"><h2>same time we are boutique</h2></div>
+                    <div className="aboutText overflow-hidden"><h2>agency that is more than the</h2></div>
+                    <div className="aboutText overflow-hidden"><h2>collective. We learn and grow, win</h2></div>
+                    <div className="aboutText overflow-hidden"><h2>and celebrate together.</h2></div>
+                    
+                </div>
+                <div className="relative flex flex-col mt-8 sm:flex-row sm:mt-16 gap-8 ">
+                    <div className=" order-2 sm:order-1  sm:w-1/2">
+                        <img className="" src="https://obys.agency/wp-content/uploads/2020/07/content-image01.jpg" alt="image"/>
+                    </div>
+                    <div 
+                        className="rightText order-1 sm:order-2 w-2/3  text-[3.2vw] font-[PlinaReg] leading-[5vw] 
+                        text-[#cbcaca]
+                        sm:w-1/5  sm:text-[.9vw] sm:leading-[1.4vw]   "
+                    >
+                        <h5 className="mb-8">We are happy to present our new website and updated version of Obys agency. As before we are open for new projects worldwide!</h5>
+                        <h5>
+                            Would you like to have award winning site or unique branding style, please say hi to our manager —info@obys.agency.
+                            And we will help you with the pleasure.
+                        </h5>
+                    </div>
+                    {/* blue Image */}
+                    <div className="order-3 w-full
+                        px-[4vw] pt-[2vw] pb-[12vw]
+                        sm:absolute top-[50%] left-[35%] 
+                        sm:w-[34vw] sm:px-[3vw] sm:py-[2vw] font-[PlinaReg]
+                        bg-[#3f7df4]"
+                    >
+                        <div className="row flex items-start sm:items-center justify-between 
+                            border-b-[.9px]
+                             border-white py-[5vw]
+                            sm:py-[2vw]"
+                        >
+                            <h3 className=" sm:text-[1.4vw] whitespace-nowrap text-[3.6vw]">Awwwards x16</h3>
+                            <p className="w-1/2  tracking-normal 
+                                text-[3.4vw] leading-[4vw] 
+                                sm:w-2/4 sm:text-[.8vw] sm:leading-[.9vw]
+                                "
+                            >
+                                SOTM, SOTD and Honrable Mentions
+                            </p>
+                        </div>
+                        <div className="row flex items-start sm:items-center justify-between py-[5vw]
+                        border-b-[.9px] border-white sm:py-[2vw]">
+                            <h3 className="text-[3.6vw] sm:text-[1.4vw] ">Red Dot Award x1</h3>
+                            <p className="w-1/2 sm:w-2/4 sm:text-[.8vw] sm:leading-[.9vw] tracking-normal text-[3.4vw] 
+                            leading-[4vw] ">Best of the Best</p>
+                        </div>
+                        <div className="row flex items-start sm:items-center justify-between py-[5vw] 
+                        border-b-[.9px] border-white sm:py-[2vw]">
+                            <h3 className="sm:text-[1.4vw] text-[3.6vw]">FWA x11</h3>
+                            <p className="w-1/2 sm:w-2/4 sm:text-[.8vw] sm:leading-[.9vw] tracking-normal text-[3.4vw] leading-[4vw]">FWA of the Day</p>
+                        </div>
+                        <div className="row flex items-start sm:items-center justify-between py-[5vw]
+                         border-b-[.9px] border-white sm:py-[2vw]">
+                            <h3 className="sm:text-[1.4vw] text-[3.6vw]">CSSDA x23</h3>
+                            <p className="w-1/2 sm:w-2/4 sm:text-[.8vw] sm:leading-[.9vw] tracking-normal text-[3.4vw] leading-[4vw]">WOTM WOTD and UI, UX Inovation</p>
+                        </div>
+                        <div className="row flex items-start sm:items-center justify-between  border-b-[.9px] py-[5vw]
+                         border-white sm:py-[2vw]">
+                            <h3 className="sm:text-[1.4vw] text-[3.6vw]">Behance x25</h3>
+                            <p className="w-1/2 sm:w-2/4 sm:text-[.8vw] sm:leading-[.9vw] tracking-normal text-[3.4vw] leading-[4vw]">Interaction, Graphic Design</p>
+                        </div>
+                    </div>        
+                </div>
+                {/* Line animation */}
+                <UnderLine  marginBottom='1vw' marginTop='18vw'  />
+                {/* <div 
+                    className="underline mt-[16vw] mb-[5vw] w-full h-[.25vw] 
+                    sm:h-[.01vw] sm:mt-[18vw] sm:mb-[1vw] bg-white"
+                ></div> */}
+                <p className="font-[PlinaReg] text-[3.5vw] pt-[3vw] sm:pt-0 sm:text-[.8vw]">We work with</p>
+            </div>    
         </div>
-      </div>
-    </section>
-  );
+    </div>
+  )
 }
+
+export default About

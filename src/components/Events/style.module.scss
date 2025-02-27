@@ -5,6 +5,8 @@
   justify-content: center;
   position: sticky;
   top: 0px;
+  perspective: 1000px;
+  transform-style: preserve-3d;
   .card{
     display: flex;
     flex-direction: column;
@@ -17,12 +19,22 @@
     transform-origin: top;
     backdrop-filter: blur(10px);
     transition: transform 0.3s ease;
-    background: rgba(25, 10, 45, 0.85) !important; // Deep purple base
-    border: 1px solid rgba(147, 51, 234, 0.3) !important; // Bright purple border
-    box-shadow: 0 8px 32px rgba(147, 51, 234, 0.2) !important; // Purple glow
+    background: rgba(255, 255, 255, 0.95) !important; // Light background
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+
+    @media (max-width: 1024px) {
+      width: 90vw;
+      padding: 30px;
+      height: auto;
+      min-height: 500px;
+    }
 
     &:hover {
-      transform: translateY(-5px);
+      transform: translateY(-5px) scale(1.02);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
     h2{
@@ -32,14 +44,25 @@
       font-weight: 600;
       letter-spacing: 0.5px;
       text-transform: uppercase;
-      color: #a855f7 !important; // Bright purple text
-      text-shadow: 0 0 10px rgba(147, 51, 234, 0.6) !important;
+      color: #1a1a1a !important; // Dark text
+      text-shadow: none !important;
+
+      @media (max-width: 768px) {
+        font-size: 24px;
+      }
     }
     .body{
       display: flex;
       height: 100%;
       margin-top: 50px;
       gap: 50px;
+      transform-style: preserve-3d;
+
+      @media (max-width: 768px) {
+        flex-direction: column;
+        margin-top: 30px;
+        gap: 30px;
+      }
 
       .description{
         width: 40%;
@@ -49,16 +72,25 @@
           font-size: 16px;
           line-height: 1.8;
           opacity: 0.9;
-          color: #e9d5ff !important; // Light purple text
-          text-shadow: 0 0 2px rgba(233, 213, 255, 0.3);
+          color: #4a4a4a !important; // Softer dark text
+          text-shadow: none;
           &::first-letter{
             font-size: 32px;
             font-family: 'Title';
             font-weight: 600;
-            color: #a855f7;
-            text-shadow: 0 0 10px rgba(147, 51, 234, 0.6);
+            color: #2a2a2a; // Darker for first letter
+            text-shadow: none;
           }
         }
+
+        @media (max-width: 768px) {
+          width: 100%;
+          top: 0;
+          p {
+            font-size: 14px;
+          }
+        }
+
         span{
           display: flex;
           align-items: center;
@@ -68,13 +100,12 @@
             text-decoration: underline;
             cursor: pointer;
             transition: all 0.3s ease;
-            color: #a855f7 !important;
-            border-bottom: 1px solid rgba(147, 51, 234, 0.3) !important;
+            color: #666666 !important;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.2) !important;
             
             &:hover {
-              opacity: 1;
-              border-bottom-color: rgba(255,255,255,0.8);
-              text-shadow: 0 0 8px rgba(147, 51, 234, 0.8);
+              color: #000000 !important;
+              border-bottom-color: rgba(0, 0, 0, 0.5);
             }
           }
         }
@@ -86,10 +117,14 @@
         height: 100%;
         border-radius: 25px;
         overflow: hidden;
-        border: 1px solid rgba(147, 51, 234, 0.3);
-        box-shadow: 0 8px 32px rgba(147, 51, 234, 0.2);
-        // box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+        border: 1px solid rgba(214, 211, 209, 0.2);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
         
+        @media (max-width: 768px) {
+          width: 100%;
+          height: 300px;
+        }
+
         &:hover {
           transform: scale(1.01);
           transition: transform 0.3s ease;
@@ -101,8 +136,7 @@
         }
         img{
           object-fit: cover;
-          filter: brightness(1.1) contrast(1.1);
-          filter: brightness(1.2) contrast(1.2) saturate(1.1);
+          filter: brightness(0.9) contrast(1.1) sepia(0.1);
         }
       }
     }

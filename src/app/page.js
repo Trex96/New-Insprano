@@ -12,6 +12,8 @@ import Trailer from '@/components/VideoMask/Trailer';
 import Gallary from '@/components/gallary/Gallary';
 import Event from '@/components/Events/Event';
 import Faq from '@/components/Faq/Faq';
+import Last from '@/components/Last';
+
 
 export default function Home() {
 
@@ -44,7 +46,7 @@ export default function Home() {
       <Gallary />
       {/* <SlidingImages /> */}
       <Trailer/>
-      <Faq />
+      <Last />
       {/* <Contact /> */}
     </main>
   )
