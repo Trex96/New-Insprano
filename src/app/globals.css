@@ -1,6 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 body{
     margin: 0px;
     overflow: hidden; /* Hide scrollbars */
     cursor: wait;
+    background-color: #ffffff;
+    color: #000;
 }
+
+/* #151515 */
+
+@font-face {
+    font-family: 'PlainLight';
+    src: url(../../src/assets/fonts/plainLight.ttf);
+}
+
+
+@font-face {
+    font-family: 'PlinaReg';
+    src: url(../../src/assets/fonts/PlainReg.ttf);
+}
+
+
+@font-face {
+    font-family: 'silkSerif';
+    src: url(../../src/assets/fonts/silkSerif.ttf);
+}
+
+
+@font-face {
+    font-family: 'silkSerifReg';
+    src: url(../../src/assets/fonts/silkSerifReg.ttf);
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 6px;
+    
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #151515;
+  }
+
+  /* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+    height: 4px;
+    border-radius: 50px;
+  }

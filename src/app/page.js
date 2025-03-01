@@ -8,6 +8,12 @@ import Projects from '../components/Projects';
 import Description from '../components/Description';
 import SlidingImages from '../components/SlidingImages';
 import Contact from '../components/Contact';
+import Trailer from '@/components/VideoMask/Trailer';
+import Gallary from '@/components/gallary/Gallary';
+import Event from '@/components/Events/Event';
+import Faq from '@/components/Faq/Faq';
+import Last from '@/components/Last';
+
 
 export default function Home() {
 
@@ -35,9 +41,13 @@ export default function Home() {
       </AnimatePresence>
       <Landing />
       <Description />
-      <Projects />
-      <SlidingImages />
-      <Contact />
+      <Event/>
+      {/* <Projects /> */}
+      <Gallary />
+      {/* <SlidingImages /> */}
+      <Trailer/>
+      <Last />
+      {/* <Contact /> */}
     </main>
   )
 }
