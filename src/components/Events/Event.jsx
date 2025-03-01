@@ -15,7 +15,10 @@ export default function Home() {
 
   useEffect(() => {
     const lenis = new Lenis()
+    
     const handleScroll = () => {
+      if (!container.current) return;
+      
       const section = container.current;
       const rect = section.getBoundingClientRect();
       const sectionTop = rect.top;
@@ -32,15 +35,26 @@ export default function Home() {
       }
     }
 
+    // Initial check
+    handleScroll();
+
+    // Add scroll event listener
     window.addEventListener('scroll', handleScroll);
+
+    // Setup Lenis smooth scrolling
+    let rafId = null;
     function raf(time) {
       lenis.raf(time)
-      requestAnimationFrame(raf)
+      rafId = requestAnimationFrame(raf)
     }
     requestAnimationFrame(raf)
 
+    // Cleanup function
     return () => {
-      lenis.destroy()
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+      }
+      lenis.destroy();
       window.removeEventListener('scroll', handleScroll);
       document.body.style.backgroundColor = '#ffffff';
     }
@@ -66,7 +80,14 @@ export default function Home() {
         {
           projects.map((project, i) => {
             const targetScale = 1 - ((projects.length - i) * 0.05);
-            return <Card key={`p_${i}`} i={i} {...project} progress={scrollYProgress} range={[i * .25, 1]} targetScale={targetScale} />
+            return <Card 
+              key={`p_${i}`} 
+              i={i} 
+              {...project} 
+              progress={scrollYProgress} 
+              range={[i * .25, 1]} 
+              targetScale={targetScale}
+            />
           })
         }
       </motion.div>
