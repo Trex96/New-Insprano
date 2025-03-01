@@ -13,17 +13,22 @@ const navItems = [
     href: "/",
   },
   {
-    title: "Work",
-    href: "/work",
+    title: "Competitions",
+    href: "/competitions",
   },
   {
-    title: "About",
-    href: "/about",
+    title: "Timeline",
+    href: "/timeline",
   },
   {
-    title: "Contact",
-    href: "/contact",
+    title: "Merchandise",
+    href: "/merchandise",
   },
+  {
+    title: "Our Team",
+    href: "/our-team",
+  }
+
 ]
 
 export default function index() {
@@ -55,7 +60,7 @@ export default function index() {
                       })
                     }
             </div>
-            <Footer />
+
         </div>
         <Curve />
     </motion.div>

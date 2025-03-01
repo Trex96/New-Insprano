@@ -9,22 +9,22 @@ import Rounded from '../../common/RoundedButton';
 
 const projects = [
   {
-    title: "C2 Montreal",
+    title: "Line Follower",
     src: "c2montreal.png",
     color: "#000000"
   },
   {
-    title: "Office Studio",
+    title: "Robo Sumo",
     src: "officestudio.png",
     color: "#8C8C8C"
   },
   {
-    title: "Locomotive",
+    title: "Robo Soccer",
     src: "locomotive.png",
     color: "#EFE8D3"
   },
   {
-    title: "Silencio",
+    title: "Death Race",
     src: "silencio.png",
     color: "#706D63"
   }
