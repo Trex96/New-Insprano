@@ -57,7 +57,7 @@ export default function Home() {
           z: showCards ? 0 : -1000
         }}
         transition={{ 
-          duration: 0.8,
+          duration: 1,
           ease: "easeOut",
           staggerChildren: 0.1
         }}

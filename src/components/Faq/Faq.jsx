@@ -23,30 +23,36 @@ const Faq = () => {
     const [openIndex, setOpenIndex] = useState(null);
 
     return (
-        <section className="py-32 px-4 bg-[#111111] relative h-screen w-full ">
+        <section className="py-32 px-4 bg-black relative h-screen w-full">
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
-                <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-[#FF6B6B] rounded-full opacity-[0.03] blur-[120px]" />
-                <div className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-[#4ECDC4] rounded-full opacity-[0.03] blur-[120px]" />
+                <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-[#FF6B6B] rounded-full opacity-[0.04] blur-[150px]" />
+                <div className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-[#4ECDC4] rounded-full opacity-[0.04] blur-[150px]" />
             </div>
 
             <motion.div 
-                className="max-w-3xl mx-auto relative z-10"
+                className="max-w-4xl mx-auto relative z-10"
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1 }}
+                transition={{ duration: 1.2 }}
             >
                 <div className="mb-20 text-center">
                     <motion.p 
-                        className="text-[#FF6B6B] uppercase tracking-[0.2em] text-sm mb-4"
+                        className="text-[#FF6B6B] tracking-[0.2em] text-sm mb-4"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
-                        transition={{ delay: 0.3 }}
+                        transition={{ delay: 0.4 }}
                     >
-                        Got Questions?
+                        ― Got Questions? ―
                     </motion.p>
                     <h2 className="text-5xl font-light text-white/90 tracking-tight">
                         Let's Clear Things Up
                     </h2>
+                    <motion.div 
+                        className="w-20 h-[1px] bg-gradient-to-r from-transparent via-[#FF6B6B] to-transparent mx-auto mt-6"
+                        initial={{ scaleX: 0 }}
+                        animate={{ scaleX: 1 }}
+                        transition={{ delay: 0.6, duration: 0.8 }}
+                    />
                 </div>
 
                 <div>

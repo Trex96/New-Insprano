@@ -7,7 +7,7 @@ export default function Trailer() {
   const stickyMask = useRef(null);
 
   const initialMaskSize = 0.8;
-  const targetMaskSize = 60;
+  const targetMaskSize = 80;
   const easing = 0.15;
   let easedScrollProgress = 0;
 
