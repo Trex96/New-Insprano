@@ -4,6 +4,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import UnderLine from '../Underline/index'
 import styles from './Style.module.css'
+import Image from "next/image";
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -73,7 +74,15 @@ function About() {
                 </div>
                 <div className="relative flex flex-col mt-8 sm:flex-row sm:mt-16 gap-8 ">
                     <div className=" order-2 sm:order-1  sm:w-1/2">
-                        <img className="" src="/images/fest-preview.jpg" alt="Festival Preview"/>
+                        <Image 
+                            src="https://images.unsplash.com/photo-1535223289827-42f1e9919769"
+                            alt="Person wearing VR headset"
+                            width={800}
+                            height={600}
+                            className="w-full h-auto object-cover"
+                            loading="lazy"
+                            quality={90}
+                        />
                     </div>
                     <div 
                         className="rightText order-1 sm:order-2 w-2/3  text-[3.2vw] font-[PlinaReg] leading-[5vw] 

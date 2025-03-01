@@ -18,23 +18,26 @@
     padding:50px;
     transform-origin: top;
     backdrop-filter: blur(10px);
-    transition: transform 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
     background: rgba(255, 255, 255, 0.95) !important; // Light background
     border: 1px solid rgba(0, 0, 0, 0.1) !important;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
     transform-style: preserve-3d;
     backface-visibility: hidden;
+    transform: translateZ(0); // Hardware acceleration
+    will-change: transform; // Performance optimization
 
     @media (max-width: 1024px) {
       width: 90vw;
       padding: 30px;
       height: auto;
       min-height: 500px;
+      transform: none; // Disable 3D transforms on mobile
     }
 
     &:hover {
       transform: translateY(-5px) scale(1.02);
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     h2{
@@ -119,6 +122,7 @@
         overflow: hidden;
         border: 1px solid rgba(214, 211, 209, 0.2);
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        transform: translateZ(0); // Hardware acceleration
         
         @media (max-width: 768px) {
           width: 100%;
@@ -130,13 +134,33 @@
           transition: transform 0.3s ease;
         }
 
+        &::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(
+            to bottom,
+            rgba(0,0,0,0) 0%,
+            rgba(0,0,0,0.02) 100%
+          );
+          pointer-events: none;
+        }
+
         .inner{
           width: 100%;
           height: 100%;
         }
         img{
           object-fit: cover;
-          filter: brightness(0.9) contrast(1.1) sepia(0.1);
+          filter: brightness(0.95) contrast(1.05) saturate(1.1);
+          transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+          
+          &:hover {
+            filter: brightness(1) contrast(1.02) saturate(1.05);
+          }
         }
       }
     }

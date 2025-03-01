@@ -2,7 +2,7 @@ import { motion, AnimatePresence } from "framer-motion";
 export const FaqItem = ({ question, answer, isOpen, onClick }) => {
   return (
       <motion.div 
-          className="relative mb-12"
+          className="relative mb-8 md:mb-12"
           initial={false}
       >
           <motion.button
@@ -13,11 +13,11 @@ export const FaqItem = ({ question, answer, isOpen, onClick }) => {
               <div className="flex items-center">
                   <motion.span
                       animate={{ rotate: isOpen ? 90 : 0 }}
-                      className="text-[#FF6B6B] mr-4 text-2xl"
+                      className="text-[#FF6B6B] mr-3 md:mr-4 text-xl md:text-2xl"
                   >
                       →
                   </motion.span>
-                  <h3 className="text-2xl text-white/90 hover:text-[#FF6B6B] transition-colors duration-300">
+                  <h3 className="text-xl md:text-2xl text-white/90 hover:text-[#FF6B6B] transition-colors duration-300 pr-4">
                       {question}
                   </h3>
               </div>
@@ -43,7 +43,7 @@ export const FaqItem = ({ question, answer, isOpen, onClick }) => {
                           y: -10,
                           transition: { duration: 0.4 }
                       }}
-                      className="pl-12 pr-4 mt-6 text-white/70 text-lg leading-relaxed"
+                      className="pl-8 md:pl-12 pr-2 md:pr-4 mt-4 md:mt-6 text-white/70 text-base md:text-lg leading-relaxed"
                   >
                       {answer}
                   </motion.div>

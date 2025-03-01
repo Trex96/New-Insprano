@@ -23,7 +23,7 @@ const Faq = () => {
     const [openIndex, setOpenIndex] = useState(null);
 
     return (
-        <section className="py-32 px-4 bg-black relative h-screen w-full">
+        <section className="py-16 md:py-24 lg:py-32 px-4 bg-black relative min-h-screen w-full">
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
                 <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-[#FF6B6B] rounded-full opacity-[0.04] blur-[150px]" />
                 <div className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-[#4ECDC4] rounded-full opacity-[0.04] blur-[150px]" />
@@ -35,17 +35,17 @@ const Faq = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1.2 }}
             >
-                <div className="mb-20 text-center">
+                <div className="mb-12 md:mb-16 lg:mb-20 text-center">
                     <motion.p 
-                        className="text-[#FF6B6B] tracking-[0.2em] text-sm mb-4"
+                        className="text-[#FF6B6B] tracking-[0.2em] text-xs md:text-sm mb-3 md:mb-4"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.4 }}
                     >
                         ― Got Questions? ―
                     </motion.p>
-                    <h2 className="text-5xl font-light text-white/90 tracking-tight">
-                        Let's Clear Things Up
+                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-white/90 tracking-tight">
+                        Let&apos;s Clear Things Up
                     </h2>
                     <motion.div 
                         className="w-20 h-[1px] bg-gradient-to-r from-transparent via-[#FF6B6B] to-transparent mx-auto mt-6"

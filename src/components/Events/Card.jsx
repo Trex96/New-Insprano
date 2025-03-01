@@ -2,21 +2,33 @@
 import Image from 'next/image';
 import styles from './style.module.scss';
 import { useTransform, motion, useScroll } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 
 const Card = ({i, title, description, src, url, color, progress, range, targetScale}) => {
-
   const container = useRef(null);
+  const imageRef = useRef(null);
+
   const { scrollYProgress } = useScroll({
     target: container,
-    offset: ['start end', 'start start']
-  })
+    offset: ['start end', 'start start'],
+    smooth: true
+  });
 
-  const imageScale = useTransform(scrollYProgress, [0, 1], [2, 1])
+  const imageScale = useTransform(scrollYProgress, [0, 1], [1.3, 1]) // Reduced initial scale
   const scale = useTransform(progress, range, [1, targetScale]);
 
-  const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
-  const topOffset = isMobile ? `calc(-5vh + ${i * 15}px)` : `calc(-5vh + ${i * 25}px)`;
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const topOffset = isMobile ? `calc(-5vh + ${i * 12}px)` : `calc(-5vh + ${i * 20}px)`;
  
   return (
     <div ref={container} className={styles.cardContainer}>
@@ -25,22 +37,22 @@ const Card = ({i, title, description, src, url, color, progress, range, targetSc
           backgroundColor: color, 
           scale, 
           top: topOffset,
-          boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
-          border: '1px solid rgba(255,255,255,0.1)'
         }} 
         className={styles.card}
-        initial={{ opacity: 0, y: 100, rotateX: 10, scale: 0.9 }}
-        animate={{ opacity: 1, y: 0, rotateX: 0, scale: 1 }}
+        initial={{ opacity: 0, y: 30, rotateX: 3 }}
+        animate={{ opacity: 1, y: 0, rotateX: 0 }}
         transition={{
-          duration: 0.6,
-          delay: i * 0.1,
-          ease: "easeOut"
+          duration: 0.8,
+          delay: i * 0.06,
+          ease: [0.22, 1, 0.36, 1]
         }}
         whileHover={{ 
-          y: isMobile ? -2 : -5,
-          scale: 1.02,
-          boxShadow: '0 15px 40px rgba(0,0,0,0.15)',
-          transition: { duration: 0.3 }
+          y: isMobile ? -2 : -3,
+          scale: 1.008,
+          transition: { 
+            duration: 0.3,
+            ease: [0.33, 1, 0.68, 1]
+          }
         }}
       >
         <h2 style={{ 
@@ -78,13 +90,18 @@ const Card = ({i, title, description, src, url, color, progress, range, targetSc
 
           <div className={styles.imageContainer}>
             <motion.div
+              ref={imageRef}
               className={styles.inner}
-              style={{scale: imageScale}}
+              style={{ scale: imageScale }}
             >
               <Image
                 fill
                 src={`/images/${src}`}
-                alt="image" 
+                alt={title}
+                priority={i === 0}
+                loading={i === 0 ? "eager" : "lazy"}
+                sizes="(max-width: 768px) 100vw, 60vw"
+                quality={90}
               />
             </motion.div>
           </div>
