@@ -39,7 +39,9 @@ export default function Home() {
       <AnimatePresence mode='wait'>
         {isLoading && <Preloader />}
       </AnimatePresence>
-      <Landing />
+      <section className="landing-section">
+        <Landing />
+      </section>
       <Description />
       <Trailer/>
       <Event/>
