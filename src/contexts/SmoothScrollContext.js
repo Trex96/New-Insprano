@@ -8,7 +8,7 @@ const SmoothScrollContext = createContext({
 
 export const SmoothScrollProvider = ({ children }) => {
   const [lenis, setLenis] = useState(null);
-
+ 
   useEffect(() => {
     const lenisInstance = new Lenis({
       duration: 1.2,

@@ -33,6 +33,11 @@ function About() {
         width: '100%',
         duration: 1.2,
     })
+    gsap.from('.aboutText', {
+        y: 50,
+        opacity: 0,
+        duration: 1
+    })
 
     })
 
@@ -62,15 +67,17 @@ function About() {
                 <UnderLine marginBottom='4vw' marginTop='4vw' />
                 <div 
                     className="sm:w-2/4 text-[5.5vw] tracking-normal leading-[6vw] font-[PlinaReg] pt-[8vw] sm:pt-0
-                    sm:text-[1.8vw] sm:leading-[2.2vw]"
+                    sm:text-[1.8vw] sm:leading-[2.2vw] text-justify"
                 >
-                    <div className="aboutText overflow-hidden"><h2>Welcome to the grand confluence of</h2></div>
-                    <div className="aboutText overflow-hidden"><h2>technology and culture. Insprano,</h2></div>
-                    <div className="aboutText overflow-hidden"><h2>our premier technical festival,</h2></div>
-                    <div className="aboutText overflow-hidden"><h2>joins forces with Udaan, our vibrant</h2></div>
-                    <div className="aboutText overflow-hidden"><h2>cultural celebration, bringing you</h2></div>
-                    <div className="aboutText overflow-hidden"><h2>an unprecedented fusion of innovation</h2></div>
-                    <div className="aboutText overflow-hidden"><h2>and artistic expression.</h2></div>
+                    <p className="aboutText overflow-hidden">
+                        Welcome to the grand confluence of 
+                        technology and culture. Insprano, 
+                        our premier technical festival, 
+                        joins forces with Udaan, our vibrant 
+                        cultural celebration, bringing you 
+                        an unprecedented fusion of innovation 
+                        and artistic expression.
+                    </p>
                 </div>
                 <div className="relative flex flex-col mt-8 sm:flex-row sm:mt-16 gap-8 ">
                     <div className=" order-2 sm:order-1  sm:w-1/2">
