@@ -25,7 +25,7 @@ function UnderLine({marginTop, marginBottom}) {
     const setPath = (progress) => {
         const {innerWidth} = window;
         const width = innerWidth * 0.7;
-        path.current.setAttributeNS("", "d", `M0 50 Q${width * x} ${50 + progress}, ${width} 50`)
+        path.current?.setAttributeNS("", "d", `M0 50 Q${width * x} ${50 + progress}, ${width} 50`)
     }
 
     const  manageMouseEnter = () => {

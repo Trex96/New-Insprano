@@ -4,7 +4,7 @@
 
 body{
     margin: 0px;
-    overflow: hidden; /* Hide scrollbars */
+
     cursor: wait;
     background-color: #ffffff;
     color: #000;
@@ -116,4 +116,10 @@ body{
   body {
     @apply bg-background text-foreground;
     }
+}
+
+@media (max-width: 768px) {
+  .hide-on-mobile {
+    display: none;
+  }
 }

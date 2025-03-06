@@ -11,4 +11,9 @@
         position: absolute;
         left: -30px;
     }
+
+    @media (max-width: 768px) {
+        font-size: 24px;
+        margin: 15px 0;
+    }
 }

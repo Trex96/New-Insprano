@@ -60,6 +60,10 @@
         display: flex;
         align-items: center;
 
+        @media screen and (max-width: 768px) {
+            display: none;
+        }
+
         .el{
             display: flex;
             flex-direction: column;
@@ -90,10 +94,19 @@
     } 
 }
 .headerButtonContainer{
-    transform: scale(0);
     position: fixed;
     right: 0px;
     z-index: 4;
+    
+    // @media screen and (min-width: 769px) {
+    //     transform: scale(0);
+    //     display: none;
+    // }
+    
+    // @media screen and (max-width: 768px) {
+    //     transform: scale(1);
+    //     display: block;
+    // }
 
     .button{
         position: relative;
@@ -106,6 +119,18 @@
         display: flex;
         align-items: center;
         justify-content: center;
+
+        @media screen and (max-width: 768px) {
+            width: 50px;
+            height: 50px;
+            margin: 12px;
+        }
+
+        @media screen and (max-width: 480px) {
+            width: 50px;
+            height: 50px;
+            margin: 10px;
+        }
     }
     
     .burger{
@@ -121,6 +146,10 @@
             background-color: white;
             position: relative;
             transition: transform 0.3s;
+
+            @media screen and (max-width: 480px) {
+                width: 35%;
+            }
         }
     
         &::after{

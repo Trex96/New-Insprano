@@ -13,16 +13,16 @@ export const FaqItem = ({ question, answer, isOpen, onClick }) => {
               <div className="flex items-center">
                   <motion.span
                       animate={{ rotate: isOpen ? 90 : 0 }}
-                      className="text-[#FF6B6B] mr-3 md:mr-4 text-xl md:text-2xl"
+                      className="text-[#3B82F6] mr-3 md:mr-4 text-xl md:text-2xl"
                   >
                       →
                   </motion.span>
-                  <h3 className="text-xl md:text-2xl text-white/90 hover:text-[#FF6B6B] transition-colors duration-300 pr-4">
+                  <h3 className="text-xl md:text-2xl text-white/90 hover:text-[#3B82F6] transition-colors duration-300 pr-4">
                       {question}
                   </h3>
               </div>
               <motion.div 
-                  className="h-[1px] bg-gradient-to-r from-[#FF6B6B] via-[#FF8F8F] to-transparent mt-3"
+                  className="h-[1px] bg-gradient-to-r from-[#3B82F6] via-[#60A5FA] to-transparent mt-3"
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: isOpen ? 1 : 0 }}
                   transition={{ duration: 0.7, ease: "easeInOut" }}

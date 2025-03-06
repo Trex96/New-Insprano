@@ -6,4 +6,9 @@
     height: 100%;
     fill: rgb(41, 41, 41);
     stroke: none;
+    @media (max-width: 768px) {
+        display: none; // Hide the curve on mobile or
+        left: -50px;
+        width: 50px;
+    }
 }

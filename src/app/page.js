@@ -1,5 +1,5 @@
 'use client';
-import styles from './page.module.scss'
+// import styles from './page.module.scss'
 import { useEffect, useState } from 'react'
 import { AnimatePresence } from 'framer-motion';
 import Preloader from '../components/Preloader';
@@ -9,7 +9,7 @@ import Description from '../components/Description';
 import SlidingImages from '../components/SlidingImages';
 import Contact from '../components/Contact';
 import Trailer from '@/components/VideoMask/Trailer';
-import Gallary from '@/components/gallary/Gallary';
+import Gallary from '@/components/gallary';
 import Event from '@/components/Events/Event';
 import Faq from '@/components/Faq/Faq';
 import Last from '@/components/Last';
@@ -29,19 +29,19 @@ export default function Home() {
             setIsLoading(false);
             document.body.style.cursor = 'default'
             window.scrollTo(0,0);
-          }, 2000)
+          }, 3000)
       }
     )()
   }, [])
 
   return (
-    <main className={styles.main}>
+    <main>
       <AnimatePresence mode='wait'>
         {isLoading && <Preloader />}
       </AnimatePresence>
       <Landing />
       <Description />
-      <Trailer/>
+      {/* <Trailer/> */}
       <Event/>
       <Gallary />
       <Last />
