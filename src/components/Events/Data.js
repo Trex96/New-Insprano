@@ -1,37 +1,32 @@
 export const projects = [
   {
-    title: "Matthias Leidinger",
-    description: "Originally hailing from Austria, Berlin-based photographer Matthias Leindinger is a young creative brimming with talent and ideas.",
-    src: "rock.jpg",
-    link: "https://www.ignant.com/2023/03/25/ad2186-matthias-leidingers-photographic-exploration-of-awe-and-wonder/",
-    color: "rgba(255, 255, 255, 0.95)" // Pure white
+    "title": "ROBOTICS EVENT",
+    "description": "Step into the future with our Robotics Event, where innovation meets engineering! Compete in robot wars, automation challenges, and AI-powered robotics contests. Whether you're into designing autonomous bots or testing machine learning models, this event is for you!",
+    "src": "https://images.unsplash.com/photo-1561144257-e32e8efc6c4f?q=80&w=2070&auto=format&fit=crop",
+    "color": "rgba(255, 255, 255, 0.95)"
   },
   {
-    title: "Clément Chapillon",
-    description: "This is a story on the border between reality and imaginary, about the contradictory feelings that the insularity of a rocky, arid, and wild territory provokes”—so French photographer Clément Chapillon describes his latest highly captivating project Les rochers fauves (French for ‘The tawny rocks’).",
-    src: "tree.jpg",
-    link: "https://www.ignant.com/2022/09/30/clement-chapillon-questions-geographical-and-mental-isolation-with-les-rochers-fauves/",
-    color: "rgba(252, 252, 252, 0.95)" // Slightly off-white
+    "title": "CULTURAL EVENTS",
+    "description": "Celebrate art, music, and creativity at Udaan – the cultural fest! From dance performances and painting competitions to photography contests and fashion shows, immerse yourself in the vibrant cultural showcase of talent and passion.",
+    "src": "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=2070&auto=format&fit=crop",
+    "color": "rgba(252, 252, 252, 0.95)"
   },
   {
-    title: "Zissou",
-    description: "Though he views photography as a medium for storytelling, Zissou’s images don’t insist on a narrative. Both crisp and ethereal, they’re encoded with an ambiguity—a certain tension—that lets the viewer find their own story within them.",
-    src: "water.jpg",
-    link: "https://www.ignant.com/2023/10/28/capturing-balis-many-faces-zissou-documents-the-sacred-and-the-mundane-of-a-fragile-island/",
-    color: "rgba(250, 250, 250, 0.95)" // Warm white
+    "title": "WORKSHOPS AND SCIENCE EXHIBITIONS",
+    "description": "Experience hands-on learning through interactive workshops and science exhibitions! Engage in AI, cybersecurity, space exploration, and cutting-edge technology demonstrations. Learn from industry experts and showcase your innovative projects!",
+    "src": "https://images.unsplash.com/photo-1544531586-fde5298cdd40?q=80&w=2070&auto=format&fit=crop",
+    "color": "rgba(250, 250, 250, 0.95)"
   },
   {
-    title: "Mathias Svold and Ulrik Hasemann",
-    description: "The coastlines of Denmark are documented in tonal colors in a pensive new series by Danish photographers Ulrik Hasemann and Mathias Svold; an ongoing project investigating how humans interact with and disrupt the Danish coast.",
-    src: "house.jpg",
-    link: "https://www.ignant.com/2019/03/13/a-photographic-series-depicting-the-uncertain-future-of-denmarks-treasured-coastlines/",
-    color: "rgba(248, 248, 248, 0.95)" // Light gray white
+    "title": "HACKATHON",
+    "description": "Code. Build. Innovate! Our Hackathon is the ultimate battle for developers, where participants solve real-world problems, build apps, and develop AI-powered solutions. Team up, work under pressure, and create something extraordinary within the given timeframe!",
+    "src": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=2070&auto=format&fit=crop",
+    "color": "rgba(248, 248, 248, 0.95)"
   },
   {
-    title: "Mark Rammers",
-    description: "Dutch photographer Mark Rammers has shared with IGNANT the first chapter of his latest photographic project, ‘all over again’—captured while in residency at Hektor, an old farm in Los Valles, Lanzarote. Titled ‘Beginnings’, the mesmerizing collection of images is a visual and meditative journey into the origins of regrets and the uncertainty of stepping into new unknowns.",
-    src: "cactus.jpg",
-    link: "https://www.ignant.com/2023/04/12/mark-rammers-all-over-again-is-a-study-of-regret-and-the-willingness-to-move-forward/",
-    color: "rgba(245, 245, 245, 0.95)" // Soft gray white
+    "title": "COLLEGE EVENTS",
+    "description": "From sports tournaments and fun quizzes to open mic sessions and informal activities, the College Events section brings students together for unforgettable memories. Join us for an exciting mix of fun, competition, and camaraderie!",
+    "src": "https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=2070&auto=format&fit=crop",
+    "color": "rgba(245, 245, 245, 0.95)"
   }
 ]

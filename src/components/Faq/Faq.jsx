@@ -5,18 +5,27 @@ import { FaqItem } from './FaqItem';
 
 const faqData = [
     {
-        question: "What's your design approach?",
-        answer: "I believe in minimalism with purpose. Every element serves a function while maintaining visual harmony and engaging user experience."
+        question: "What are TechFest and Udaan?",
+        answer: "TechFest is a technology-based festival featuring coding, robotics, and tech competitions. Udaan is a cultural festival that includes dance, painting, photography, and other artistic competitions."
     },
     {
-        question: "Which tools do you use?",
-        answer: "Figma for design, After Effects for motion, and custom code for interactive experiences. I believe in using the right tool for each unique challenge."
+        question: "Can I participate in both TechFest and Udaan?",
+        answer: "Yes! Participants can join events in both fests, but be sure to check the schedules to avoid overlaps."
     },
     {
-        question: "How do you handle projects?",
-        answer: "Each project begins with deep research and wireframing. I collaborate closely with clients through iterative design sprints to achieve the perfect balance of form and function."
+        question: "What kind of competitions are included?",
+        answer: "TechFest includes hackathons, coding challenges, robotics, and innovation-based competitions. Udaan features dance, painting, photography, and other creative arts competitions."
+    },
+    {
+        question: "How do I register for the events?",
+        answer: "Registration is available online through our official portal. Choose your preferred competitions and complete the registration before the deadline."
+    },
+    {
+        question: "Are there prizes for winners?",
+        answer: "Yes! Winners will receive cash prizes, certificates, and other exciting rewards based on the competition."
     }
 ];
+
 
 
 const Faq = () => {

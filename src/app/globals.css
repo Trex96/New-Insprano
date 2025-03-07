@@ -4,10 +4,10 @@
 
 body{
     margin: 0px;
-
-    cursor: wait;
     background-color: #ffffff;
     color: #000;
+    transition: background-color 1.2s cubic-bezier(0.33, 1, 0.68, 1),
+                color 1.2s cubic-bezier(0.33, 1, 0.68, 1);
 }
 
 /* #151515 */
@@ -17,18 +17,15 @@ body{
     src: url(../../src/assets/fonts/plainLight.ttf);
 }
 
-
 @font-face {
     font-family: 'PlinaReg';
     src: url(../../src/assets/fonts/PlainReg.ttf);
 }
 
-
 @font-face {
     font-family: 'silkSerif';
     src: url(../../src/assets/fonts/silkSerif.ttf);
 }
-
 
 @font-face {
     font-family: 'silkSerifReg';
@@ -38,20 +35,21 @@ body{
 /* width */
 ::-webkit-scrollbar {
     width: 6px;
-    
-  }
+}
   
-  /* Track */
-  ::-webkit-scrollbar-track {
+/* Track */
+::-webkit-scrollbar-track {
     background: #151515;
-  }
+    transition: background-color 1.2s cubic-bezier(0.33, 1, 0.68, 1);
+}
 
-  /* Handle */
+/* Handle */
 ::-webkit-scrollbar-thumb {
     background: #888;
     height: 4px;
     border-radius: 50px;
-  }
+    transition: background-color 1.2s cubic-bezier(0.33, 1, 0.68, 1);
+}
 
 @layer base {
   :root {

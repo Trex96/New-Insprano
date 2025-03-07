@@ -56,7 +56,7 @@ const Merchandise = () => {
                   ))}
                 </div>
                 <a 
-                  href="https://forms.google.com/your-form-link-here" 
+                  href="https://forms.gle/MHW2WBGrkfsqzW7c9" 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="block w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-3 rounded-xl hover:from-purple-500 hover:to-blue-500 transition-all duration-300 transform hover:scale-[1.02] text-center"

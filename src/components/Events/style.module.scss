@@ -5,7 +5,7 @@
   justify-content: center;
   position: sticky;
   top: 0px;
-  perspective: 1000px;
+  perspective: 1500px;
   transform-style: preserve-3d;
   .card{
     display: flex;
@@ -15,29 +15,36 @@
     height: 500px;
     width: 1000px;
     border-radius: 25px;
-    padding:50px;
+    padding: 50px;
     transform-origin: top;
     backdrop-filter: blur(10px);
-    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-    background: rgba(255, 255, 255, 0.95) !important; // Light background
-    border: 1px solid rgba(0, 0, 0, 0.1) !important;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+    transition: all 1.2s cubic-bezier(0.33, 1, 0.68, 1);
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     transform-style: preserve-3d;
     backface-visibility: hidden;
-    transform: translateZ(0); // Hardware acceleration
-    will-change: transform; // Performance optimization
+    transform: translateZ(0);
+    will-change: transform, background-color, opacity;
+
+    &.darkMode {
+      background: rgba(30, 30, 30, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
 
     @media (max-width: 1024px) {
       width: 90vw;
       padding: 30px;
       height: auto;
       min-height: 500px;
-      transform: none; // Disable 3D transforms on mobile
+      transform: none;
     }
 
     &:hover {
       transform: translateY(-5px) scale(1.02);
-      transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.2);
+      transition: all 0.6s cubic-bezier(0.33, 1, 0.68, 1);
     }
 
     h2{
@@ -45,10 +52,13 @@
       margin: 0px;
       font-size: 28px;
       font-weight: 600;
-      letter-spacing: 0.5px;
+      color: #000000;
       text-transform: uppercase;
-      color: #1a1a1a !important; // Dark text
-      text-shadow: none !important;
+      transition: all 0.8s cubic-bezier(0.33, 1, 0.68, 1);
+
+      &.darkText {
+        color: #ffffff;
+      }
 
       @media (max-width: 768px) {
         font-size: 24px;
@@ -75,14 +85,23 @@
           font-size: 16px;
           line-height: 1.8;
           opacity: 0.9;
-          color: #4a4a4a !important; // Softer dark text
-          text-shadow: none;
+          color: #000000;
+          transition: all 0.8s cubic-bezier(0.33, 1, 0.68, 1);
+
+          &.darkText {
+            color: #e0e0e0;
+          }
+
           &::first-letter{
             font-size: 32px;
             font-family: 'Title';
             font-weight: 600;
-            color: #2a2a2a; // Darker for first letter
-            text-shadow: none;
+            color: #000000;
+            transition: all 0.8s cubic-bezier(0.33, 1, 0.68, 1);
+          }
+
+          &.darkText::first-letter {
+            color: #ffffff;
           }
         }
 
@@ -122,7 +141,8 @@
         overflow: hidden;
         border: 1px solid rgba(214, 211, 209, 0.2);
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-        transform: translateZ(0); // Hardware acceleration
+        transform: translateZ(0);
+        transition: all 0.8s cubic-bezier(0.33, 1, 0.68, 1);
         
         @media (max-width: 768px) {
           width: 100%;
@@ -131,7 +151,7 @@
 
         &:hover {
           transform: scale(1.01);
-          transition: transform 0.3s ease;
+          box-shadow: 0 15px 45px rgba(0, 0, 0, 0.4);
         }
 
         &::after {
@@ -147,6 +167,7 @@
             rgba(0,0,0,0.02) 100%
           );
           pointer-events: none;
+          transition: opacity 0.8s ease;
         }
 
         .inner{
@@ -156,10 +177,11 @@
         img{
           object-fit: cover;
           filter: brightness(0.95) contrast(1.05) saturate(1.1);
-          transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+          transition: all 1s cubic-bezier(0.33, 1, 0.68, 1);
           
           &:hover {
             filter: brightness(1) contrast(1.02) saturate(1.05);
+            transform: scale(1.02);
           }
         }
       }
