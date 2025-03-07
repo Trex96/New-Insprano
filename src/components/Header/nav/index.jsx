@@ -23,10 +23,6 @@ const navItems = [
   {
     title: "Merchandise",
     href: "/merchandise",
-  },
-  {
-    title: "Our Team",
-    href: "/our-team",
   }
 
 ]
