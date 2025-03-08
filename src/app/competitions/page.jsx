@@ -12,7 +12,7 @@ const mainCompetitions = [
     description: "Build an autonomous robot that can follow a complex path while handling various challenges and obstacles",
     prize: "₹16,000",
     date: "March 15, 2024",
-    image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=2940&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1561144257-e32e8efc6c4f?q=80&w=2070&auto=format&fit=crop"
   },
   {
     id: 2,

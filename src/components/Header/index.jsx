@@ -9,7 +9,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Rounded from '../../common/RoundedButton';
 import Magnetic from '../../common/Magnetic';
 
-export default function Header() {
+export default function index() {
     const header = useRef(null);
     const [isActive, setIsActive] = useState(false);
     const pathname = usePathname();
@@ -71,8 +71,6 @@ export default function Header() {
                 </Magnetic>
             </div>
         </div>
-
-         {/* menu button */}
         <div ref={button} className={styles.headerButtonContainer}>
             <Rounded onClick={() => {setIsActive(!isActive)}} className={`${styles.button}`}>
                 <div className={`${styles.burger} ${isActive ? styles.burgerActive : ""}`}></div>

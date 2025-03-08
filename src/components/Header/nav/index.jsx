@@ -23,11 +23,11 @@ const navItems = [
   {
     title: "Merchandise",
     href: "/merchandise",
-  }
-
+  },
+ 
 ]
 
-export default function Header() {
+export default function index() {
 
   const pathname = usePathname();
   const [selectedIndicator, setSelectedIndicator] = useState(pathname);

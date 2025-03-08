@@ -5,24 +5,7 @@
     right: 0;
     top: 0;
     color: white;
-    z-index: 3;
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    will-change: transform, opacity, visibility;
-    pointer-events: auto;
-
-    &.hidden {
-        opacity: 0;
-        visibility: hidden;
-        pointer-events: none;
-    }
-
-    @media (max-width: 768px) {
-        width: 100%;
-        height: 100vh;
-    }
+    z-index: 9998;
     .body{
         box-sizing: border-box;
         height: 100%;
@@ -30,21 +13,14 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        @media (max-width: 768px) {
-            padding: 20px;
-        }
+
         .nav{
             display: flex;
             flex-direction: column;
             font-size: 56px;
             gap: 12px;
             margin-top: 80px;
-            @media (max-width: 768px) {
-                .header p {
-                    font-size: 18px;
-                    margin-bottom: 20px;
-                }
-            }
+
             .header{
                 color: rgb(153, 153, 153);
                 border-bottom: 1px solid rgb(153, 153, 153);

@@ -1,7 +1,7 @@
 .header{
     position: absolute;
     display: flex;
-    z-index: 10;
+    z-index: 9999;
     top: 0;
     color: white;
     padding: 35px;
@@ -14,6 +14,8 @@
     .logo{
         display: flex;
         cursor: pointer;
+        position: relative;
+        z-index: 9999;
         p{
             margin: 0px;
             transition: all 0.5s cubic-bezier(0.76, 0, 0.24, 1);
@@ -60,15 +62,11 @@
         display: flex;
         align-items: center;
 
-        @media screen and (max-width: 768px) {
-            display: none;
-        }
-
         .el{
             display: flex;
             flex-direction: column;
             position: relative;
-            z-index: 1;
+            z-index: 9999;
             padding: 15px;
             cursor: pointer;
             &:hover{
@@ -94,19 +92,10 @@
     } 
 }
 .headerButtonContainer{
+    transform: scale(0);
     position: fixed;
     right: 0px;
-    z-index: 4;
-    
-    // @media screen and (min-width: 769px) {
-    //     transform: scale(0);
-    //     display: none;
-    // }
-    
-    // @media screen and (max-width: 768px) {
-    //     transform: scale(1);
-    //     display: block;
-    // }
+    z-index: 9999;
 
     .button{
         position: relative;
@@ -119,18 +108,6 @@
         display: flex;
         align-items: center;
         justify-content: center;
-
-        @media screen and (max-width: 768px) {
-            width: 50px;
-            height: 50px;
-            margin: 12px;
-        }
-
-        @media screen and (max-width: 480px) {
-            width: 50px;
-            height: 50px;
-            margin: 10px;
-        }
     }
     
     .burger{
@@ -146,10 +123,6 @@
             background-color: white;
             position: relative;
             transition: transform 0.3s;
-
-            @media screen and (max-width: 480px) {
-                width: 35%;
-            }
         }
     
         &::after{

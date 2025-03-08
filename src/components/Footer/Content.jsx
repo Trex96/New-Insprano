@@ -12,7 +12,7 @@ export default function Content() {
 
 const Section1 = () => {
   return (
-    <div>
+    <div className="mt-4 md:mt-0">
       <Nav />
     </div>
   );
@@ -20,7 +20,7 @@ const Section1 = () => {
 
 const Section2 = () => {
   return (
-    <div className="flex flex-col md:flex-row justify-between items-center md:items-end gap-4 md:gap-0">
+    <div className="flex flex-col md:flex-row justify-between items-center md:items-end gap-4 md:gap-0 mt-8 md:mt-10">
       <h1 className="leading-[0.8] mt-10 font-playfair italic text-center md:text-left">
         <span className="text-[4rem] md:text-[8rem] lg:text-[14rem] block md:inline py-2">Insprano</span>
         <span className="text-xl md:text-3xl py-2">X udaan</span>
@@ -36,17 +36,17 @@ const Nav = () => {
       <div className="flex flex-col gap-2">
         <h3 className="mb-2 uppercase text-gray-600 font-playfair">Contact</h3>
         <a href="http://instagram.com/gcek.insprano/" className="hover:text-black transition-colors">Instagram</a>
-        <p  className="hover:text-black transition-colors">Email: kilobots@gcekbpatna.ac.in</p>
-
+        <p className="hover:text-black transition-colors">Email: kilobots@gcekbpatna.ac.in</p>
       </div>
+      
       <div className="flex flex-col gap-2">
         <h3 className="mb-2 uppercase text-gray-600 font-playfair">Quick Links</h3>
         <p className="hover:text-black transition-colors"><Link href="/">Home</Link></p>
         <p className="hover:text-black transition-colors"><Link href="/competitions">Competitions</Link></p>
         <p className="hover:text-black transition-colors"><Link href="/timeline">Timeline</Link></p>
         <p className="hover:text-black transition-colors"><Link href="/merchandise">Merchandise</Link></p>
-        <p className="hover:text-black transition-colors"></p>
       </div>
+      
       <div className="flex flex-col gap-2">
         <h3 className="mb-2 uppercase text-gray-600 font-playfair">Website Developer</h3>
         <p className="hover:text-black transition-colors flex items-center gap-2">

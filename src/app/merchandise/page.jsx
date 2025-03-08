@@ -5,7 +5,7 @@ const merchItems = [
     id: 1,
     name: 'Techfest T-Shirt',
     price: 380,
-    image: 'https://lh5.googleusercontent.com/juVUumMAkNIjzIsvmskxDYZqVZTm_nbJvt3OKzjF-U_XgfMXXVxPP1t1yJvubdNPbtIUAd7JXrKNvcNH_XuGxF9i15zy77Ru9iEKw2H9cDZBk9wuSaVOi0mXOdb7jU8m5ykr35YyyuM=w1920',
+    image: '/images/Merch.jpeg',
     sizes: ['S', 'M', 'L', 'XL'],
     category: 'Clothing'
   }

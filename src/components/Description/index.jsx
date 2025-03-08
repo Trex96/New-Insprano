@@ -93,11 +93,11 @@ function About() {
                     </div>
                     <div 
                         className="rightText order-1 sm:order-2 w-2/3  text-[3.2vw] font-[PlinaReg] leading-[5vw] 
-                        text-[#cbcaca]
-                        sm:w-1/5  sm:text-[.9vw] sm:leading-[1.4vw]"
+                        
+                        sm:w-1/5  sm:text-[.9vw] sm:leading-[1.4vw] text-[#0c0b0b]"
                     >
                         <h5 className="mb-8">Experience the perfect blend of technical innovation and cultural excellence in this unique dual festival celebration.</h5>
-                        <h5>
+                        <h5 className="">
                             Join us for workshops, competitions, performances, and much more. Connect with fellow enthusiasts and celebrate the spirit of creativity and innovation.
                         </h5>
                     </div>
@@ -118,20 +118,20 @@ function About() {
                             <h3 className="sm:text-[1.4vw] whitespace-nowrap text-[3.6vw]">Events</h3>
                             <p className="w-1/2 tracking-normal text-[3.4vw] leading-[4vw] 
                                 sm:w-2/4 sm:text-[.8vw] sm:leading-[.9vw]">
-                                50+ Technical & Cultural Events
+                                30+ Technical & Cultural Events
                             </p>
                         </div>
                         <div className="row flex items-start sm:items-center justify-between py-[5vw]
                         border-b-[.9px] border-white sm:py-[2vw]">
                             <h3 className="text-[3.6vw] sm:text-[1.4vw]">Prize Pool</h3>
                             <p className="w-1/2 sm:w-2/4 sm:text-[.8vw] sm:leading-[.9vw] tracking-normal text-[3.4vw] 
-                            leading-[4vw]">₹5 Lakhs+ Worth Prizes</p>
+                            leading-[4vw]">₹97,000 Worth Cash Prizes</p>
                         </div>
-                        <div className="row flex items-start sm:items-center justify-between py-[5vw]
-                        border-b-[.9px] border-white sm:py-[2vw]">
-                            <h3 className="sm:text-[1.4vw] text-[3.6vw]">Workshops</h3>
-                            <p className="w-1/2 sm:w-2/4 sm:text-[.8vw] sm:leading-[.9vw] tracking-normal text-[3.4vw] leading-[4vw]">15+ Industry Expert Sessions</p>
-                        </div>
+                        {/* <div className="row flex items-start sm:items-center justify-between py-[5vw]
+                        border-b-[.9px] border-white sm:py-[2vw]"> */}
+                            {/* <h3 className="sm:text-[1.4vw] text-[3.6vw]">Workshops</h3>
+                            <p className="w-1/2 sm:w-2/4 sm:text-[.8vw] sm:leading-[.9vw] tracking-normal text-[3.4vw] leading-[4vw]">15+ Industry Expert Sessions</p> */}
+                        {/* </div> */}
                         <div className="row flex items-start sm:items-center justify-between py-[5vw]
                         border-b-[.9px] border-white sm:py-[2vw]">
                             <h3 className="sm:text-[1.4vw] text-[3.6vw]">Participation</h3>

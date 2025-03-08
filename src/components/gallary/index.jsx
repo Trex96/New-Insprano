@@ -14,6 +14,11 @@ import img6 from '../../assets/img/img6.webp';
 import img7 from '../../assets/img/img7.webp';
 import img8 from '../../assets/img/img8.webp';
 import img9 from '../../assets/img/img9.webp';
+import img10 from '../../assets/img/img10.webp';
+import img11 from '../../assets/img/img11.webp';
+import img12 from '../../assets/img/img12.jpeg';
+import img13 from '../../assets/img/img13.jpeg';
+import img14 from '../../assets/img/img14.jpeg'
 
 const images = [
   img1,
@@ -24,10 +29,11 @@ const images = [
   img7,
   img8,
   img9,
-  img1,
-  img2,
-  img3,
-  img5
+  img10,
+  img11,
+  img12,
+  img13,
+  img14,
 ];
 
 export default function Gallary() {
@@ -70,10 +76,10 @@ export default function Gallary() {
     <main className={styles.main}>
       <div className={styles.spacer}></div>
       <div ref={gallery} className={styles.gallery}>
-        <Column images={[images[0], images[1], images[2]]} y={y}/>
-        <Column images={[images[3], images[4], images[5]]} y={y2}/>
-        <Column images={[images[6], images[7], images[8]]} y={y3}/>
-        <Column images={[images[9], images[10], images[11]]} y={y4}/>
+        <Column images={[images[0], images[1], images[2], images[3]]} y={y}/>
+        <Column images={[images[4], images[5], images[6]]} y={y2}/>
+        <Column images={[images[7], images[8], images[9]]} y={y3}/>
+        <Column images={[images[10], images[11], images[12]]} y={y4}/>
       </div>
       <div className={styles.spacer}></div>
     </main>

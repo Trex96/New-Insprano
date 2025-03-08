@@ -96,7 +96,7 @@ export default function TimelinePage(){
             className="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all border border-gray-700"
           >
             <div className="flex justify-start items-start mb-4">
-              {/* <span className="text-blue-400 font-semibold">{event.time}</span> */}
+              <span className="text-blue-400 px-5 py-1 font-semibold">{event.time}</span>
               <span className="bg-blue-900/50 text-blue-300 text-sm px-3 py-1 rounded-full border border-blue-700/50">
                 {event.category}
               </span>
